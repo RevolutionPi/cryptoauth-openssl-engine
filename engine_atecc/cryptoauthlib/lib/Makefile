@@ -15,7 +15,7 @@ O_FILES+=$(wildcard **/*.o)
 LIBNAME=libcryptoauth
 
 all:	$(MODULES)
-	- $(foreach subdir,$(basename $(SUBDIRS)),$(shell make -w -C $(subdir)))
+	$(foreach subdir,$(basename $(SUBDIRS)),$(MAKE) -w -C $(subdir);)
 	@echo "OFILES: $(O_FILES)"
 	ar -r $(LIBNAME).a $(MODULES) $(O_FILES) 
 	ranlib $(LIBNAME).a
